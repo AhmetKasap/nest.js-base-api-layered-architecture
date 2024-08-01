@@ -1,16 +1,20 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { PostModule } from './modules/post/post.module';
 import 'dotenv/config'
 import { UserEntity } from './modules/user/model/UserEntity';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
+
 
 @Module({
   imports: [
     UserModule,
     AuthModule,
     PostModule,
+
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -21,7 +25,9 @@ import { UserEntity } from './modules/user/model/UserEntity';
       entities: [UserEntity],
       synchronize: true,}),
   ],
+  
   controllers: [],
   providers: [],
 })
 export class AppModule {}
+
