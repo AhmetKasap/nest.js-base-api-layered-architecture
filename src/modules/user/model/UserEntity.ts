@@ -4,7 +4,7 @@ import { PostEntity } from "src/modules/post/model/PostEntity";
 @Entity()
 export class UserEntity {
     @PrimaryGeneratedColumn("uuid")
-    id : number
+    id : string
 
     @Column()
     name : string
@@ -18,6 +18,6 @@ export class UserEntity {
     @Column()
     password : string
 
-    @OneToMany(() => PostEntity, (post) => post.users)
+    @OneToMany(() => PostEntity, (post) => post.user)
     posts : PostEntity[]
 }

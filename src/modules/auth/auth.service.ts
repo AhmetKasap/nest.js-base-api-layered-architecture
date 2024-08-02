@@ -29,8 +29,8 @@ export class AuthService {
             ...authDTO,
             password: hashedPassword,
         });
-        await this.authRepository.save(user);
-        return user;
+        await this.authRepository.save(user)
+        return user
     }
 
     async login(loginDTO: LoginDTO) {

@@ -20,17 +20,15 @@ export class AuthController {
         if (data) return new APIResponse("registration created successfully", data).ok(res)
     }   
 
-    @UseInterceptors(ResponseInterceptor)
     @Post('/login')
     async login (@Body() loginDTO : LoginDTO, @Res() res: Response) : Promise<Response>  {
-        const token = await this.authService.login(loginDTO)
-        if (token) return new APIResponse('login successfully', token).ok(res)
+        const data = await this.authService.login(loginDTO)
+        if (data) return new APIResponse('login successfully', data).ok(res)
     }
 
     @UseGuards(AuthGuard)
     @Get('/test-token')
     async testToken (@Request() req) {
-        console.log(req.user)
         return req.user
     }
 

@@ -7,6 +7,7 @@ import 'dotenv/config'
 import { UserEntity } from './modules/user/model/UserEntity';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { PostEntity } from './modules/post/model/PostEntity';
 
 
 @Module({
@@ -22,7 +23,7 @@ import { APP_GUARD } from '@nestjs/core';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      entities: [UserEntity],
+      entities: [UserEntity, PostEntity],
       synchronize: true,}),
   ],
   

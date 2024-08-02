@@ -4,7 +4,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
 export class PostEntity {
     @PrimaryGeneratedColumn("uuid")
-    id : number
+    id : string
 
     @Column()
     title : string
@@ -13,6 +13,6 @@ export class PostEntity {
     content : string
 
     @ManyToOne(() => UserEntity, (user) => user.posts)
-    users : UserEntity
+    user : UserEntity
 
 }
