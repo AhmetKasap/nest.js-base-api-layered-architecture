@@ -22,7 +22,7 @@ export class AuthController {
 
     @UseInterceptors(ResponseInterceptor)
     @Post('/login')
-    async login (@Body() loginDTO : LoginDTO, @Res() res: Response) : Promise<any>  {
+    async login (@Body() loginDTO : LoginDTO, @Res() res: Response) : Promise<Response>  {
         const token = await this.authService.login(loginDTO)
         if (token) return new APIResponse('login successfully', token).ok(res)
     }
