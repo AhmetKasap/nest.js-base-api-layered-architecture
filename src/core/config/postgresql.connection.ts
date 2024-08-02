@@ -3,7 +3,7 @@ import { PostEntity } from "src/modules/post/model/PostEntity"
 import { UserEntity } from "src/modules/user/model/UserEntity"
 import 'dotenv/config'
 
-export const postgreConnection = TypeOrmModule.forRoot({
+export const postgreDBConnection = TypeOrmModule.forRoot({
   type: 'postgres',
   host: 'localhost',
   port: 5432,

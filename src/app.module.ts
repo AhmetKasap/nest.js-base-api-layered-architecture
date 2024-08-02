@@ -3,7 +3,7 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { PostModule } from './modules/post/post.module';
 import 'dotenv/config'
-import {postgreConnection} from './core/config/postgresql.config'
+import {postgreDBConnection} from './core/config/postgresql.connection'
 
 @Module({
   imports: [
@@ -11,7 +11,7 @@ import {postgreConnection} from './core/config/postgresql.config'
     AuthModule,
     PostModule,
 
-    postgreConnection
+    postgreDBConnection
   ],
   
   controllers: [],

@@ -4,6 +4,7 @@ import 'dotenv/config'
 import { ValidationPipe } from '@nestjs/common'
 import { SwaggerModule } from '@nestjs/swagger'
 import {swaggerConfig} from './core/config/swagger.config'
+import { corsSettings } from './core/config/cors/cors.settings'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -15,7 +16,10 @@ async function bootstrap() {
 
   //!swagger config
   const document = SwaggerModule.createDocument(app, swaggerConfig)
-  SwaggerModule.setup('swagger-docs', app, document);
+  SwaggerModule.setup('swagger-docs', app, document)
+
+  //!cors settings
+  app.enableCors(corsSettings)
 
   await app.listen(process.env.PORT || 5001)
   
