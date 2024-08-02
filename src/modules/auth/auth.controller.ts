@@ -8,7 +8,9 @@ import { AuthGuard } from './guard/auth.guard';
 import { APIResponse } from 'src/common/utils/ApiResponse';
 import { Response } from 'express';
 import { ResponseInterceptor } from 'src/core/interceptors/ResponseInterceptor';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService : AuthService) {}

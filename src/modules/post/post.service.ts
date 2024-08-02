@@ -19,11 +19,11 @@ export class PostService {
         return post
     }
 
-    async getPostById(postId) {
+    async getPostById(postId) : Promise<PostEntity> {
         const post = await this.postRepository.getPostById(postId)
         return post
     }
 
-    
+
 
 }

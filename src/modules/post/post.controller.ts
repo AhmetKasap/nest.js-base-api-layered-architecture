@@ -6,7 +6,9 @@ import { UuidDTO } from 'src/common/dto/UuidDTO';
 import { APIException } from 'src/common/utils/ApiException';
 import { APIResponse } from 'src/common/utils/ApiResponse';
 import { Response } from 'express';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('post')
 @Controller('post')
 export class PostController {
 
@@ -19,6 +21,7 @@ export class PostController {
         return await this.postService.createPost(postDTO, user)
     }
 
+    @UseGuards(AuthGuard)
     async deletePostById() {
 
     }
@@ -38,7 +41,7 @@ export class PostController {
 
     async getAllPostByUserId() {
 
-    }
+    }   
 
 
     
