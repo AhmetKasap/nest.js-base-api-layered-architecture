@@ -7,14 +7,19 @@ import { ErrorException } from 'src/common/utils/ErrorException';
 import { LoginDTO } from './dto/LoginDTO';
 import * as bcrypt from 'bcrypt';
 import { AuthDTO } from './dto/AuthDTO';
+import { JwtService } from '@nestjs/jwt';
 
 
 @Injectable()
 export class AuthService {
 
     constructor(
+        private jwtService: JwtService,
+
         @InjectRepository(UserEntity)
         private readonly authRepository: Repository<UserEntity>
+
+
     ) { }
 
     async register(authDTO: AuthDTO): Promise<UserEntity> {
@@ -28,17 +33,22 @@ export class AuthService {
         });
         await this.authRepository.save(user);
         return user;
-
     }
 
-    async login(loginDTO: LoginDTO): Promise<UserEntity> {
-        const auth = await this.authRepository.findOne({ where: { email: loginDTO.email} })
-        if(!auth) throw new ErrorException('Invalid email or password',401) 
-        
+    async login(loginDTO: LoginDTO) {
+        const auth = await this.authRepository.findOne({ where: { email: loginDTO.email } })
+        if (!auth) throw new ErrorException('Invalid email or password', 401)
+
         const isPasswordValid = await bcrypt.compare(loginDTO.password, auth.password)
-        if(!isPasswordValid) throw new ErrorException('Invalid email or password',401) 
+        if (!isPasswordValid) throw new ErrorException('Invalid email or password', 401)
 
-        return auth
+        const payload = { id: auth.id, email: auth.email };
+        return {
+            access_token: await this.jwtService.signAsync(payload),
+        }
+
     }
+
+
 
 }
