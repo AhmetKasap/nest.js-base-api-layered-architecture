@@ -11,10 +11,9 @@ import { CommentModule } from './modules/comment/comment.module';
     UserModule,
     AuthModule,
     PostModule,
+    CommentModule,
 
-    postgreDBConnection,
-
-    CommentModule
+    postgreDBConnection
   ],
   
   controllers: [],
