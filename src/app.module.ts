@@ -5,6 +5,7 @@ import { PostModule } from './modules/post/post.module';
 import 'dotenv/config'
 import {postgreDBConnection} from './core/config/postgresql.connection'
 import { CommentModule } from './modules/comment/comment.module';
+import { LikeModule } from './modules/like/like.module';
 
 @Module({
   imports: [
@@ -13,7 +14,9 @@ import { CommentModule } from './modules/comment/comment.module';
     PostModule,
     CommentModule,
 
-    postgreDBConnection
+    postgreDBConnection,
+
+    LikeModule
   ],
   
   controllers: [],
