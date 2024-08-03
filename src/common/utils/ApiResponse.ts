@@ -30,7 +30,7 @@ export class APIResponse {
 
     badRequest(res: ExpressResponse) {
         return res.status(400).json({
-            success : true,
+            success : false,
             message: this.message,
             data: this.data
         })
@@ -38,7 +38,7 @@ export class APIResponse {
 
     unauthorized(res: ExpressResponse) {
         return res.status(401).json({
-            success : true,
+            success : false,
             message: this.message,
             data: this.data
         })
@@ -46,7 +46,7 @@ export class APIResponse {
 
     forbidden(res: ExpressResponse) {
         return res.status(403).json({
-            success : true,
+            success : false,
             message: this.message,
             data: this.data
         })
@@ -54,7 +54,7 @@ export class APIResponse {
     
     notfound(res: ExpressResponse) {
         return res.status(404).json({
-            success : true,
+            success : false,
             message: this.message,
             data: this.data
         })
@@ -62,7 +62,7 @@ export class APIResponse {
 
     tooManyRequest(res: ExpressResponse) {
         return res.status(429).json({
-            success : true,
+            success : false,
             message: this.message,
             data: this.data
         })
@@ -70,7 +70,7 @@ export class APIResponse {
 
     conflict(res: ExpressResponse) {
         return res.status(409).json({
-            success : true,
+            success : false,
             message: this.message,
             data: this.data
         })
@@ -78,7 +78,7 @@ export class APIResponse {
 
     internalServerError(res: ExpressResponse) {
         return res.status(500).json({
-            success : true,
+            success : false,
             message: this.message,
             data: this.data
         })
@@ -87,7 +87,7 @@ export class APIResponse {
     
     notImplemented(res: ExpressResponse) {
         return res.status(501).json({
-            success : true,
+            success : false,
             message: this.message,
             data: this.data
         })
@@ -95,7 +95,7 @@ export class APIResponse {
 
     serviceUnavailable(res: ExpressResponse) {
         return res.status(503).json({
-            success : true,
+            success : false,
             message: this.message,
             data: this.data
         })

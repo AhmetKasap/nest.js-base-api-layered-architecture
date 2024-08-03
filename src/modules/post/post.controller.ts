@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Request, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Request, Res, UseGuards } from '@nestjs/common';
 import { PostDTO } from './dto/PostDTO';
 import { PostService } from './post.service';
 import { AuthGuard } from '../auth/guard/auth.guard';
@@ -21,14 +21,32 @@ export class PostController {
         return await this.postService.createPost(postDTO, user)
     }
 
+
     @UseGuards(AuthGuard)
-    async deletePostById() {
+    @Delete(':id')
+    async deletePostById(@Param() params : UuidDTO, @Request() req, @Res() res:Response) : Promise<Response> {
+        console.log("asd")
+        const user = await req.user
+        const postId = await params.id
 
-    }
+        const data = await this.postService.deletePostById(user,postId)
+        if(data.affected ===0) return new APIResponse('not found post', null).notfound(res)
 
-    async updatePost() {
+        if(data) return new APIResponse('post successfully deleted', null).ok(res)
+    }   
 
-    }
+    
+    @UseGuards(AuthGuard)
+    @Put(':id')
+    async updatePostById(@Body() postDTO : PostDTO, @Param() params : UuidDTO, @Request() req, @Res() res:Response) : Promise<Response> {
+        const user = await req.user
+        const postId = await params.id
+
+        const data = await this.postService.updatePostById(user, postId, postDTO )
+        if(data.affected ===0) return new APIResponse('not found post', null).notfound(res)
+        if(data) return new APIResponse('post successfully updated', null).ok(res)
+    }   
+
 
     @Get(':id')
     async getPostById (@Param() params: UuidDTO, @Res() res: Response) : Promise<any> {
@@ -36,12 +54,10 @@ export class PostController {
 
         const data = await this.postService.getPostById(params.id)
         if(data) return new APIResponse('post found', data).ok(res)
-
     }
 
-    async getAllPostByUserId() {
 
-    }   
+    async getAllPostByUserId() {}   
 
 
     
