@@ -4,6 +4,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { PostModule } from './modules/post/post.module';
 import 'dotenv/config'
 import {postgreDBConnection} from './core/config/postgresql.connection'
+import { CommentModule } from './modules/comment/comment.module';
 
 @Module({
   imports: [
@@ -11,7 +12,9 @@ import {postgreDBConnection} from './core/config/postgresql.connection'
     AuthModule,
     PostModule,
 
-    postgreDBConnection
+    postgreDBConnection,
+
+    CommentModule
   ],
   
   controllers: [],
