@@ -13,10 +13,18 @@ export class PostEntity {
     @Column()
     content : string
 
-    @ManyToOne(() => UserEntity, (user) => user.posts)
+    @ManyToOne(() => UserEntity, (user) => user.posts,  { onDelete: 'CASCADE' })
     user : UserEntity
 
     @OneToMany(() => CommentEntity, (comment) => comment.post, { cascade: true, onDelete: 'CASCADE' })
     comments: CommentEntity[]
+
+    toDto() {
+        return {
+            id : this.id,
+            title : this.title,
+            content : this.content
+        }
+    }
 
 }
