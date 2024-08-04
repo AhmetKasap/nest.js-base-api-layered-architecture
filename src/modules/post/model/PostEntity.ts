@@ -16,7 +16,7 @@ export class PostEntity {
     @ManyToOne(() => UserEntity, (user) => user.posts)
     user : UserEntity
 
-    @OneToMany(() => CommentEntity, (comment) => comment.post)
+    @OneToMany(() => CommentEntity, (comment) => comment.post, { cascade: true, onDelete: 'CASCADE' })
     comments: CommentEntity[]
 
 }

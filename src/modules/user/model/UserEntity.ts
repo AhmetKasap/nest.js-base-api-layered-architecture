@@ -19,10 +19,10 @@ export class UserEntity {
     @Column()
     password : string
 
-    @OneToMany(() => PostEntity, (post) => post.user)
+    @OneToMany(() => PostEntity, (post) => post.user, { cascade: true, onDelete: 'CASCADE' })
     posts : PostEntity[]
 
-    @OneToMany(() => CommentEntity, comment => comment.user)
+    @OneToMany(() => CommentEntity, comment => comment.user, { cascade: true, onDelete: 'CASCADE' })
     comments: CommentEntity[]
 
 
