@@ -24,7 +24,7 @@ export class PostController {
 
     @UseGuards(AuthGuard)
     @Delete(':id')
-    async deletePostById(@Param() params : UuidDTO, @Request() req, @Res() res:Response) : Promise<Response> {
+    async deletePostById(@Param() params : UuidDTO, @Request() req , @Res() res:Response) : Promise<Response> {
         console.log("asd")
         const user = await req.user
         const postId = await params.id
