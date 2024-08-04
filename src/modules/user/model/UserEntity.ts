@@ -24,4 +24,13 @@ export class UserEntity {
 
     @OneToMany(() => CommentEntity, comment => comment.user)
     comments: CommentEntity[]
+
+
+    async toDto() : Promise<any> {
+        return {
+            id : this.id,
+            name : this.name,
+            lastname : this.lastname
+        }
+    }
 }

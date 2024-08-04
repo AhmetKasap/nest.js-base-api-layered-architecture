@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty, Length } from "class-validator"
 
-export class UserDTO{
+export class UserUpdateDTO{
     @IsNotEmpty()
     @Length(3,30)
     name : string
@@ -8,12 +8,4 @@ export class UserDTO{
     @IsNotEmpty()
     @Length(3,30)
     lastname : string
-
-    @IsNotEmpty()
-    @IsEmail()
-    email : string
-
-    @IsNotEmpty()
-    @Length(5,50)
-    password : string
 }

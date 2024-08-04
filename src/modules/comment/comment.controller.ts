@@ -6,9 +6,10 @@ import { APIResponse } from 'src/common/utils/ApiResponse';
 import { Response } from 'express';
 import { CommentUpdateDTO } from './dto/CommentUpdateDTO';
 import { APIException } from 'src/common/utils/ApiException';
+import { ApiTags } from '@nestjs/swagger';
 
 
-
+@ApiTags('comments')
 @Controller('comments')
 export class CommentController {
 
@@ -69,11 +70,4 @@ export class CommentController {
 
     }
 
-   
-
-    
-
-    
-
-    
 }
