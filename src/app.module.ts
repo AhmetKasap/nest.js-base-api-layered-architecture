@@ -6,6 +6,7 @@ import 'dotenv/config'
 import {postgreDBConnection} from './core/config/postgresql.connection'
 import { CommentModule } from './modules/comment/comment.module';
 import { LikeModule } from './modules/like/like.module';
+import { ChatGptModule } from './modules/chat-gpt/chat-gpt.module';
 
 @Module({
   imports: [
@@ -16,7 +17,9 @@ import { LikeModule } from './modules/like/like.module';
 
     postgreDBConnection,
 
-    LikeModule
+    LikeModule,
+
+    ChatGptModule
   ],
   
   controllers: [],
