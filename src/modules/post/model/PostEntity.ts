@@ -1,4 +1,5 @@
 import { CommentEntity } from "src/modules/comment/model/CommentEntity";
+import { LikeEntity } from "src/modules/like/model/LikeEntity";
 import { UserEntity } from "src/modules/user/model/UserEntity";
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -18,6 +19,9 @@ export class PostEntity {
 
     @OneToMany(() => CommentEntity, (comment) => comment.post, { cascade: true, onDelete: 'CASCADE' })
     comments: CommentEntity[]
+
+    @OneToMany(() => LikeEntity, (like) => like.post, { cascade: true, onDelete: 'CASCADE' })
+    likes: LikeEntity[]
 
     toDto() {
         return {

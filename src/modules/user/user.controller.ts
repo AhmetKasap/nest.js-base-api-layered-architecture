@@ -5,7 +5,9 @@ import { AuthGuard } from '../auth/guard/auth.guard';
 import { Response } from 'express';
 import { APIResponse } from 'src/common/utils/ApiResponse';
 import { PasswordDTO } from './dto/PasswordDTO';
+import {  ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('users')
 export class UserController {
 
