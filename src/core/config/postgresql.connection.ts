@@ -7,7 +7,7 @@ import { LikeEntity } from "src/modules/like/model/LikeEntity"
 
 export const postgreDBConnection = TypeOrmModule.forRoot({
   type: 'postgres',
-  host: 'localhost',
+  host: 'db',
   port: 5432,
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,

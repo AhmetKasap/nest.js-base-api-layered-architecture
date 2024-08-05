@@ -1,0 +1,52 @@
+services:
+ 
+  db:
+    image: postgres
+    container_name: nest_postgres
+    env_file:
+     - ../../.env
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/postgresql/data
+  
+  nest-api: 
+    build : 
+      context: ../../
+      dockerfile: deploy/prod/Dockerfile
+    container_name: nest-api
+    ports: 
+      - 5000:5000
+    env_file:
+     - ../../.env
+    depends_on:
+      - db
+    volumes:
+      - ../../src:/opt/nest-api/src
+      - /opt/nest-api/node_modules
+    
+
+volumes:
+  postgres_data:
+
+
+
+#------------------------
+
+#services:
+  #postgres:
+    #image: postgres
+    #container_name: nest_postgres
+    #env_file:
+    # - ../../.env
+    #environment:
+    #  - POSTGRES_USER=${POSTGRES_USER}
+    #  - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    # - POSTGRES_DB=${POSTGRES_DB}
+    #ports:
+    #  - '5432:5432'
+    #volumes:
+    #  - postgres_data:/data
+
+#volumes:
+  #postgres_data:
