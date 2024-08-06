@@ -1,0 +1,717 @@
+{
+	"info": {
+		"_postman_id": "9e553d43-1355-4370-a205-25196c557854",
+		"name": "Nest.js Base API Layered Architecture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26808226"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"ahmet\",\r\n    \"lastname\" : \"kasap\",\r\n    \"email\" : \"ahmet@gmail.com\",\r\n    \"password\" : \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"ahmet@gmail.com\",\r\n    \"password\" : \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0MTllNzk2LTFiZjMtNGNjOC05YzQwLThkMGFkZWVkNTdmNyIsImVtYWlsIjoiYWhtZXRrYXNhcEBnbWFpbC5jb20iLCJpYXQiOjE3MjI2MTkxMTgsImV4cCI6MTcyMzIyMzkxOH0.yTpyOlUr8ckSgEJ6Jt8iLp47oVMSaKF6U73g30gF6_s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/test-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"test-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZjNTI1YTVkLTBhZDgtNDkyNi1iMzg0LWZmYjVkYTUxMzkxMSIsImVtYWlsIjoiYWFobWV0a2FzYXBAZ21haWwuY29tIiwiaWF0IjoxNzIyNzg5Mjk2LCJleHAiOjE3MjMzOTQwOTZ9.BNOvYzOfWPJ5SivD7oTbMyHE3LOuL9x_Xg3ZmMg3JCI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"post title2\",\r\n    \"content\" : \"post şuanda yazıldı \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/posts/eb1b1265-621b-417b-adcb-80fa91b65f14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"eb1b1265-621b-417b-adcb-80fa91b65f14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Post By User Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZjNTI1YTVkLTBhZDgtNDkyNi1iMzg0LWZmYjVkYTUxMzkxMSIsImVtYWlsIjoiYWFobWV0a2FzYXBAZ21haWwuY29tIiwiaWF0IjoxNzIyNzg5Mjk2LCJleHAiOjE3MjMzOTQwOTZ9.BNOvYzOfWPJ5SivD7oTbMyHE3LOuL9x_Xg3ZmMg3JCI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/posts/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZjNTI1YTVkLTBhZDgtNDkyNi1iMzg0LWZmYjVkYTUxMzkxMSIsImVtYWlsIjoiYWFobWV0a2FzYXBAZ21haWwuY29tIiwiaWF0IjoxNzIyNzg5Mjk2LCJleHAiOjE3MjMzOTQwOTZ9.BNOvYzOfWPJ5SivD7oTbMyHE3LOuL9x_Xg3ZmMg3JCI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/posts/189aab6d-e2ad-48de-bacf-7d52dd838794",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"189aab6d-e2ad-48de-bacf-7d52dd838794"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZjNTI1YTVkLTBhZDgtNDkyNi1iMzg0LWZmYjVkYTUxMzkxMSIsImVtYWlsIjoiYWFobWV0a2FzYXBAZ21haWwuY29tIiwiaWF0IjoxNzIyNzg5Mjk2LCJleHAiOjE3MjMzOTQwOTZ9.BNOvYzOfWPJ5SivD7oTbMyHE3LOuL9x_Xg3ZmMg3JCI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"test 15 25\",\r\n    \"content\" : \"askerlik denemesi yzıyoum\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/posts/3b035884-e1ce-4c6d-8efa-c8c9f3c8f915",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"3b035884-e1ce-4c6d-8efa-c8c9f3c8f915"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZjNTI1YTVkLTBhZDgtNDkyNi1iMzg0LWZmYjVkYTUxMzkxMSIsImVtYWlsIjoiYWFobWV0a2FzYXBAZ21haWwuY29tIiwiaWF0IjoxNzIyNzg5Mjk2LCJleHAiOjE3MjMzOTQwOTZ9.BNOvYzOfWPJ5SivD7oTbMyHE3LOuL9x_Xg3ZmMg3JCI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\" : \"tesqqqqqqqt tetesttestst\",\r\n    \"postId\" : \"189aab6d-e2ad-48de-bacf-7d52dd838794\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comment All By User Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0MTllNzk2LTFiZjMtNGNjOC05YzQwLThkMGFkZWVkNTdmNyIsImVtYWlsIjoiYWhtZXRrYXNhcEBnbWFpbC5jb20iLCJpYXQiOjE3MjI2MTkxMTgsImV4cCI6MTcyMzIyMzkxOH0.yTpyOlUr8ckSgEJ6Jt8iLp47oVMSaKF6U73g30gF6_s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comment All By Post Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0MTllNzk2LTFiZjMtNGNjOC05YzQwLThkMGFkZWVkNTdmNyIsImVtYWlsIjoiYWhtZXRrYXNhcEBnbWFpbC5jb20iLCJpYXQiOjE3MjI2MTkxMTgsImV4cCI6MTcyMzIyMzkxOH0.yTpyOlUr8ckSgEJ6Jt8iLp47oVMSaKF6U73g30gF6_s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/comments/posts/49321d87-a09f-46cc-b276-5df408e7507d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"posts",
+								"49321d87-a09f-46cc-b276-5df408e7507d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0MTllNzk2LTFiZjMtNGNjOC05YzQwLThkMGFkZWVkNTdmNyIsImVtYWlsIjoiYWhtZXRrYXNhcEBnbWFpbC5jb20iLCJpYXQiOjE3MjI2MTkxMTgsImV4cCI6MTcyMzIyMzkxOH0.yTpyOlUr8ckSgEJ6Jt8iLp47oVMSaKF6U73g30gF6_s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\" : \"ahmet test yazar mı\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/comments/cb8a7606-8f92-4a93-b960-a53250e6d190",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"cb8a7606-8f92-4a93-b960-a53250e6d190"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0MTllNzk2LTFiZjMtNGNjOC05YzQwLThkMGFkZWVkNTdmNyIsImVtYWlsIjoiYWhtZXRrYXNhcEBnbWFpbC5jb20iLCJpYXQiOjE3MjI2MTkxMTgsImV4cCI6MTcyMzIyMzkxOH0.yTpyOlUr8ckSgEJ6Jt8iLp47oVMSaKF6U73g30gF6_s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/comments/3df2b302-e269-43a2-a6aa-91a1b794bd9b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"3df2b302-e269-43a2-a6aa-91a1b794bd9b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhNjg2Mjc4LWViMTAtNDI5ZC1iYmYwLWY0MmZmZjViMzI4NiIsImVtYWlsIjoiYWFobWV0a2FzYXBAZ21haWwuY29tIiwiaWF0IjoxNzIyNzg2ODg4LCJleHAiOjE3MjMzOTE2ODh9.qnTDVWtWzGxgJQ7FMaCOVo5T68p0xo2W0IXUQBUcXls",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"ahmet\",\r\n    \"lastname\" : \"kasap\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhNjg2Mjc4LWViMTAtNDI5ZC1iYmYwLWY0MmZmZjViMzI4NiIsImVtYWlsIjoiYWFobWV0a2FzYXBAZ21haWwuY29tIiwiaWF0IjoxNzIyNzg2ODg4LCJleHAiOjE3MjMzOTE2ODh9.qnTDVWtWzGxgJQ7FMaCOVo5T68p0xo2W0IXUQBUcXls",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1ZTY5YmQxLTUyNmYtNDYyMi1hN2ZhLTUxNmUxZmQ0NTgxMSIsImVtYWlsIjoiYWhtZXRAZ21haWwuY29tIiwiaWF0IjoxNzIyNzg2NjEyLCJleHAiOjE3MjMzOTE0MTJ9.CiKIoooYAuD9vdbaGsL81UjwwT-xageb83GnEVEmCT8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"değgiss\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/password-update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"password-update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Like",
+			"item": [
+				{
+					"name": "Create Or Delete Like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxNDUzMjIwLTEyNzYtNDBkMi04ZGZkLTAzYjEyMjhmODliMSIsImVtYWlsIjoiYWhtZXRAZ21haWwuY29tIiwiaWF0IjoxNzIyODAxOTA4LCJleHAiOjE3MjM0MDY3MDh9.QIhF3G04-y99GAV0zClsZPkAshlpFPlnUeoBqLJm0xQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postId\" : \"eb1b1265-621b-417b-adcb-80fa91b65f14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/likes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Like By PostId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZjNTI1YTVkLTBhZDgtNDkyNi1iMzg0LWZmYjVkYTUxMzkxMSIsImVtYWlsIjoiYWFobWV0a2FzYXBAZ21haWwuY29tIiwiaWF0IjoxNzIyNzg5Mjk2LCJleHAiOjE3MjMzOTQwOTZ9.BNOvYzOfWPJ5SivD7oTbMyHE3LOuL9x_Xg3ZmMg3JCI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/likes/posts/eb1b1265-621b-417b-adcb-80fa91b65f14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"likes",
+								"posts",
+								"eb1b1265-621b-417b-adcb-80fa91b65f14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chat GPT",
+			"item": [
+				{
+					"name": "Create Support",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxNDUzMjIwLTEyNzYtNDBkMi04ZGZkLTAzYjEyMjhmODliMSIsImVtYWlsIjoiYWhtZXRAZ21haWwuY29tIiwiaWF0IjoxNzIyODAxOTA4LCJleHAiOjE3MjM0MDY3MDh9.QIhF3G04-y99GAV0zClsZPkAshlpFPlnUeoBqLJm0xQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\" : \"bir post paylaşacam yardım et.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/chat-gpt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"chat-gpt"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
