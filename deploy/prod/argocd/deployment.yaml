@@ -22,6 +22,6 @@ spec:
     spec:
       containers:
         - name: nest-api
-          image: ahmetkasap/nest-api:18
+          image: ahmetkasap/nest-api:latest
           ports:
             - containerPort: 5000
